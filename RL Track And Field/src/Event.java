@@ -33,5 +33,5 @@ public class Event {
 			new Event("300IH"), 
 			new Event("200"), 
 			new Event("3000"), 
-			new Event("1600IR")};
+			new Event("1600R", true)};
 }

@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class Meet {
@@ -34,7 +35,6 @@ public class Meet {
 		int teamIndex;
 		if(teams > 7) teamIndex = 5;
 		else teamIndex = teams-2;
-		System.out.println(teamIndex);
 
 		int[] output = new int[teams];
 		if(isRelay){
@@ -46,11 +46,29 @@ public class Meet {
 		return output;
 	}
 	
+	public Team getCompetitorOwner(String input){
+		for(Team t : this.teams){
+			if(input.contains(t.getAbbreviation())) return t;
+		}
+		for(Team t : this.teams){
+			if(input.contains(t.getFullName())) return t;
+		}
+		for(Team t : this.teams){
+			if(Team.getAbbreviation(input).equals(t.getAbbreviation())) return t;
+		}
+		
+		throw new IllegalArgumentException("No Team Detected for String: " + input);
+	}
+	
+	public int getTeamIndex(Team t){
+		return teams.indexOf(t);
+	}
+	
 	public List<Team> getTeams(){
-		return new ArrayList<Team>(teams);
+		return Collections.unmodifiableList(teams);
 	}
 	
 	public List<Event> getEvents(){
-		return new ArrayList<Event>(events);
+		return Collections.unmodifiableList(events);
 	}
 }

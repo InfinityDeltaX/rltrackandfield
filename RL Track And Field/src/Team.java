@@ -7,6 +7,10 @@ public class Team {
 	}
 
 	public String getAbbreviation(){
+		return getAbbreviation(this.fullName);
+	}
+	
+	public static String getAbbreviation(String fullName){
 		String output = "";
 		for(int i = 0; i < fullName.length(); i++){
 			char current = fullName.charAt(i);
