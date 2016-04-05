@@ -30,14 +30,18 @@ public class Main {
 	public static void main(String[] args) {
 		setup();
 		
-		//exportDataToSS(generateTemplateData(meet));
-		//System.exit(0);
+		exportDataToSS(generateTemplateData(meet));
+		System.exit(0);
 		try {
 			exportDataToSS(processScoring(importDataFromSpreadsheet()));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		//generateDataFiles(PATH, "Test Meet");
+	}
+	
+	public static void config(){
+		PATH = System.getProperty("user.dir");
 	}
 	
 	public static void setup(){
